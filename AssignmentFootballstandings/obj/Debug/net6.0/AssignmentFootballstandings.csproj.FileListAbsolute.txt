@@ -1,0 +1,15 @@
+/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/bin/Debug/net6.0/AssignmentFootballstandings
+/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/bin/Debug/net6.0/AssignmentFootballstandings.deps.json
+/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/bin/Debug/net6.0/AssignmentFootballstandings.runtimeconfig.json
+/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/bin/Debug/net6.0/AssignmentFootballstandings.dll
+/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/bin/Debug/net6.0/AssignmentFootballstandings.pdb
+/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/obj/Debug/net6.0/AssignmentFootballstandings.csproj.AssemblyReference.cache
+/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/obj/Debug/net6.0/AssignmentFootballstandings.GeneratedMSBuildEditorConfig.editorconfig
+/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/obj/Debug/net6.0/AssignmentFootballstandings.AssemblyInfoInputs.cache
+/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/obj/Debug/net6.0/AssignmentFootballstandings.AssemblyInfo.cs
+/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/obj/Debug/net6.0/AssignmentFootballstandings.csproj.CoreCompileInputs.cache
+/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/obj/Debug/net6.0/AssignmentFootballstandings.dll
+/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/obj/Debug/net6.0/refint/AssignmentFootballstandings.dll
+/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/obj/Debug/net6.0/AssignmentFootballstandings.pdb
+/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/obj/Debug/net6.0/AssignmentFootballstandings.genruntimeconfig.cache
+/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/obj/Debug/net6.0/ref/AssignmentFootballstandings.dll
