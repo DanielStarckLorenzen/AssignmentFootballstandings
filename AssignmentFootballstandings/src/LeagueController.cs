@@ -61,4 +61,15 @@ public static class LeagueController
         
         return relegationGroup;
     }
+
+    public static List<Team> SetTeamPositions(List<Team> group)
+    {
+        group = group.OrderByDescending(team => team.Points).ThenByDescending(team => team.GoalDifference).ThenByDescending(team => team.GoalsScored).ToList();
+        for (int i = 0; i < group.Count; i++)
+        {
+            group[i].Position = i + 1;   
+        }
+
+        return group;
+    }
 }

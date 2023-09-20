@@ -68,6 +68,10 @@ public class Program
         //TO DO: MatchController.CreateChampionshipAndRelegationRounds(league, championshipGroup, relegationGroup);
         LeagueController.SplitTheLeague(league);
         
+        //Sort teams by points, then by goal difference, then by goals scored
+        championshipGroup = LeagueController.SetTeamPositions(championshipGroup);
+        relegationGroup = LeagueController.SetTeamPositions(relegationGroup);
+        
         Console.WriteLine("\nChampionship group:");
         Console.WriteLine($"POS | {"Abbreviation",-3} ({"ClubName)",-16} |  MP  |  W  |  D  |  L  |  GF  |  GA  |  GD  |  Pts");
         foreach (var team in championshipGroup)

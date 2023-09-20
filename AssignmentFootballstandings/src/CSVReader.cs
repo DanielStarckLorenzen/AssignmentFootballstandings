@@ -67,7 +67,7 @@ public static class CSVReader
     {
         Console.WriteLine("Reading rounds...");
         string roundsCsvFolderPath = "/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/data/rounds";
-
+        
         // Get a list of CSV file paths
         var roundFiles = Directory.GetFiles(roundsCsvFolderPath)
             .OrderBy(f => int.Parse(Regex.Match(f, @"\d+").Value)) // Sort by the numeric part of the file name
