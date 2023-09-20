@@ -15,7 +15,7 @@ public static class LeagueController
         }
     }
 
-    public static void SplitTheLeague(League league)
+    public static void SplitTheLeague(League league, string matchScenarioPath)
     {
         //Split the league into two groups by 6 teams
         List<Team> championshipGroup = league.Teams.GetRange(0, 6);
@@ -37,7 +37,7 @@ public static class LeagueController
             relegationGroup[i].Position = i + 1;
         }
 
-        MatchController.SetMatchResults(league, true);
+        MatchController.SetMatchResults(league, true, matchScenarioPath);
     }
 
     public static List<Team> SplitChampionshipGroup(League league)

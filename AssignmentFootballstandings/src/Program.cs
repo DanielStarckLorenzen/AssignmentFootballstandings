@@ -14,7 +14,9 @@ public class Program
         League league = CSVReader.ReadLeague();
         CSVReader.ReadTeams(league);
         
-        MatchController.SetMatchResults(league, false);
+        string matchScenarioPath = "/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/test/correct";
+        
+        MatchController.SetMatchResults(league, false, matchScenarioPath);
         
         LeagueController.SetTeamPlacements(league);
         
@@ -66,7 +68,7 @@ public class Program
 
         //Generate the championship and relegation rounds
         //TO DO: MatchController.CreateChampionshipAndRelegationRounds(league, championshipGroup, relegationGroup);
-        LeagueController.SplitTheLeague(league);
+        LeagueController.SplitTheLeague(league, matchScenarioPath);
         
         //Sort teams by points, then by goal difference, then by goals scored
         championshipGroup = LeagueController.SetTeamPositions(championshipGroup);

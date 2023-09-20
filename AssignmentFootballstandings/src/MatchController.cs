@@ -2,10 +2,10 @@ namespace AssignmentFootballstandings;
 
 public class MatchController
 {
-    public static void SetMatchResults(League league, bool isLeagueSplit)
+    public static void SetMatchResults(League league, bool isLeagueSplit, string matchScenarioPath)
     {
         Console.WriteLine("Setting match results...");
-        CSVReader.ReadRounds(league, isLeagueSplit);
+        CSVReader.ReadRounds(league, isLeagueSplit, matchScenarioPath);
         
         //Set the goal difference for each team
         foreach (var team in league.Teams)

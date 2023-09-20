@@ -7,7 +7,7 @@ public static class CSVReader
     public static League ReadLeague()
     {
         Console.WriteLine("Reading league...");
-        string csvFilePath = "/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/data/setup.csv";
+        string csvFilePath = "/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/test/setup.csv";
 
         try
         {
@@ -41,7 +41,7 @@ public static class CSVReader
     public static void ReadTeams(League league)
     {
         Console.WriteLine("Reading teams...");
-        string csvFilePath = "/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/data/teams.csv";
+        string csvFilePath = "/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/test/teams.csv";
         
         //Read the CSV file where the first line is the title of the different values. Reading the file where the attributes are seperated by semicolons.
         using (var reader = new StreamReader(csvFilePath))
@@ -63,10 +63,10 @@ public static class CSVReader
         }
     }
 
-    public static void ReadRounds(League league, bool isLeagueSplit)
+    public static void ReadRounds(League league, bool isLeagueSplit, string matchScenarioPath)
     {
         Console.WriteLine("Reading rounds...");
-        string roundsCsvFolderPath = "/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/data/rounds";
+        string roundsCsvFolderPath = matchScenarioPath;
         
         // Get a list of CSV file paths
         var roundFiles = Directory.GetFiles(roundsCsvFolderPath)

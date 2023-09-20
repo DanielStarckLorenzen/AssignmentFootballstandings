@@ -6,6 +6,13 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
+    
+    <ItemGroup>
+      <Folder Include="data\rounds\" />
+      <Folder Include="test\teamMeetsItself\" />
+      <Folder Include="test\teamsMeetEachOtherTooManyTimes\" />
+    </ItemGroup>
+    
 
 
 
