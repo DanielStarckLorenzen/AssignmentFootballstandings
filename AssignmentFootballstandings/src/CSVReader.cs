@@ -1,3 +1,5 @@
+using System.Text.RegularExpressions;
+
 namespace AssignmentFootballstandings;
 
 public static class CSVReader
@@ -67,18 +69,29 @@ public static class CSVReader
         string roundsCsvFolderPath = "/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/data/rounds";
 
         // Get a list of CSV file paths
-        var roundFiles = Directory.GetFiles(roundsCsvFolderPath).OrderBy(f => f).ToList();
-
-        // Determine the range of rounds to read based on the isLeagueSplit bool
-        int startRound = isLeagueSplit ? 23 : 1;
-        int endRound = isLeagueSplit ? roundFiles.Count : 22;
+        var roundFiles = Directory.GetFiles(roundsCsvFolderPath)
+            .OrderBy(f => int.Parse(Regex.Match(f, @"\d+").Value)) // Sort by the numeric part of the file name
+            .ToList();
+        
+        int startRound = 1;
+        int endRound = 22;
+        
+        // Get the start and end round
+        if (isLeagueSplit)
+        {
+            startRound = 23;
+            endRound = 32;
+        }
 
         for (int roundIndex = startRound - 1; roundIndex < endRound; roundIndex++)
         {
             var filePath = roundFiles[roundIndex];
-
+            
             try
             {
+                // Create a HashSet to keep track of teams encountered in the current round
+                var teamsInRound = new HashSet<string>();
+                
                 // Read the CSV file where the attributes are separated by semicolons.
                 using (var reader = new StreamReader(filePath))
                 {
@@ -91,6 +104,27 @@ public static class CSVReader
 
                         var homeTeamAbbreviation = values[0];
                         var awayTeamAbbreviation = values[1];
+                        
+                        // Check if the home team abbreviation has already been encountered in this round
+                        if (teamsInRound.Contains(homeTeamAbbreviation))
+                        {
+                            throw new Exception($"Team '{homeTeamAbbreviation}' is written down twice in the same round.");
+                        } 
+                        else
+                        {
+                            teamsInRound.Add(homeTeamAbbreviation);
+                        }
+
+                        // Check if the away team abbreviation has already been encountered in this round
+                        if (teamsInRound.Contains(awayTeamAbbreviation))
+                        {
+                            throw new Exception($"Team '{awayTeamAbbreviation}' is written down twice in the same round.");
+                        }
+                        else
+                        {
+                            teamsInRound.Add(awayTeamAbbreviation);
+                        }
+                        
                         var score = values[2];
                         var homeTeamGoals = int.Parse(score.Split('-')[0]);
                         var awayTeamGoals = int.Parse(score.Split('-')[1]);
@@ -99,6 +133,32 @@ public static class CSVReader
                         var homeTeam = league.Teams.Find(team => team.Abbreviation == homeTeamAbbreviation);
                         //Find the away team in the league
                         var awayTeam = league.Teams.Find(team => team.Abbreviation == awayTeamAbbreviation);
+                        
+                        // Check if the home team exists
+                        if (homeTeam == null)
+                        {
+                            throw new TeamNotFoundException($"Home team with abbreviation '{homeTeamAbbreviation}' not found.");
+                        }
+
+                        // Check if the away team exists
+                        if (awayTeam == null)
+                        {
+                            throw new TeamNotFoundException($"Away team with abbreviation '{awayTeamAbbreviation}' not found.");
+                        }
+                        
+                        homeTeam.MatchesPlayedAgainst.Add(awayTeam.Abbreviation);
+                        awayTeam.MatchesPlayedAgainst.Add(homeTeam.Abbreviation);
+                        
+                        // Check if the two teams have already played against each other more than 2 times and that the league has not split yet
+                        if (roundIndex < 22)
+                        {
+                            if (homeTeam.MatchesPlayedAgainst.Count(team => team == awayTeam.Abbreviation) > 2)
+                            {
+                                throw new Exception(
+                                    $"The two teams '{homeTeamAbbreviation}' and '{awayTeamAbbreviation}' have already played against each other more than 2 times.");
+                            }
+                        }
+
 
                         //Add the goals to the teams
                         homeTeam.GoalsScored += homeTeamGoals;

@@ -14,7 +14,7 @@ public class Team
     public int Losses { get; set; }
     public int MatchesPlayed { get; set; }
     public int Position { get; set; }
-    public List<string> MatchesPlayedAgainst { get; set; }
+    public List<string> MatchesPlayedAgainst { get; set; } = new List<string>();
     
     public Team (string abbreviation, string clubName, string specialRanking)
     {
