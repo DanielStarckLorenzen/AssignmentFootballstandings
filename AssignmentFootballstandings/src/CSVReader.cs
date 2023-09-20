@@ -8,9 +8,14 @@ public static class CSVReader
     {
         Console.WriteLine("Reading league...");
         string csvFilePath = "/Users/daniellorenzen/Desktop/c#/AssignmentFootballstandings/AssignmentFootballstandings/test/setup.csv";
-
+        
         try
         {
+            if (!File.Exists(csvFilePath))
+            {
+                throw new FileNotFoundException($"File not found: {csvFilePath}");
+            }
+            
             //Read the CSV file where the first line is the title of the different values. Reading the file where the attributes are seperated by semicolons.
             using (var reader = new StreamReader(csvFilePath))
             {
@@ -104,6 +109,11 @@ public static class CSVReader
 
                         var homeTeamAbbreviation = values[0];
                         var awayTeamAbbreviation = values[1];
+
+                        if (homeTeamAbbreviation == awayTeamAbbreviation)
+                        {
+                            throw new Exception($"The home team abbreviation '{homeTeamAbbreviation}' is the same as the away team abbreviation '{awayTeamAbbreviation}'.");
+                        }
                         
                         // Check if the home team abbreviation has already been encountered in this round
                         if (teamsInRound.Contains(homeTeamAbbreviation))
