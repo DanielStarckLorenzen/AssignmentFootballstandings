@@ -8,7 +8,6 @@
     </PropertyGroup>
     
     <ItemGroup>
-      <Folder Include="chat\" />
       <Folder Include="test\teamMeetsItself\" />
       <Folder Include="test\teamsMeetEachOtherTooManyTimes\" />
     </ItemGroup>
